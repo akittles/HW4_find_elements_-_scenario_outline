@@ -13,8 +13,10 @@ SIDE_NAV_ADD_TO_CART_BTN = (By.CSS_SELECTOR, "[data-test='content-wrapper'] [id*
 def click_add_to_cart(context):
     context.driver.find_element(*ADD_TO_CART_BTN).click()  # always clicks on 1st Add to cart btn
     # context.driver.find_elements(By.CSS_SELECTOR, "[id*='addToCartButton']")[0].click()
+    #***** can add this explicit wait to individual steps. Must import WebDiverWait to script from environment********
+    # context.driver.wait = WebDriverWait(context.driver, 20)# this line sets in this step
     context.driver.wait.until(EC.visibility_of_element_located(SIDE_NAV_PRODUCT_NAME))
-
+    # context.driver.wait = WebDriverWait(context.driver, 15) #this line sets the wait back to what you had
 
 @when('Store product name')
 def store_product_name(context):
