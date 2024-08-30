@@ -32,17 +32,11 @@ def side_nav_click_add_to_cart(context):
 def verify_search_worked(context, product):
     actual_text = context.driver.find_element(By.XPATH, "//div[@data-test='resultsHeading']").text
     assert product in actual_text, \
-        f'Expected text {product} is not in actual text {actual_text}'
+        f'Expected {product} not in actual {actual_text}'
 
 
 @then('Verify correct search results url opens for {expected_product}') # changed product to expected_product
 def verify_url(context, expected_product):
     url = context.driver.current_url
     assert expected_product in context.driver.current_url, \
-        f'Expected {expected_product} not in url {url}'
-
-#     ********************   POSSIBLY DELETE         *************
-##
-# @when('Click on cart button')
-# def click_cart(context):
-#     context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/CartLink']").click()
+        f'Expected {expected_product} not in {url}'
